@@ -53,17 +53,12 @@ data_to_file = []
 while cap.isOpened(): # True:
     ret, bgr_image = cap.read()
     
-    #bgr_image = video_capture.read()[1]
-
 
     gaze.refresh(bgr_image)
 
     bgr_image = gaze.annotated_frame()
     text = ""
-    '''print("Horizontal is")
-    print(gaze.horizontal_ratio())
-    print("Vertical is")
-    print(gaze.vertical_ratio())'''
+
     if gaze.is_right():
         text = "Looking mono chino de pelo morado"
     elif gaze.is_left():
@@ -79,10 +74,6 @@ while cap.isOpened(): # True:
 
     left_pupil = gaze.pupil_left_coords()
     right_pupil = gaze.pupil_right_coords()
-    #cv2.putText(bgr_image, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
-    #cv2.putText(bgr_image, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
-
-    #cv2.imshow("Demo", frame)
 
     gray_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2GRAY)
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
@@ -115,7 +106,7 @@ while cap.isOpened(): # True:
         if (emotion_text and text):
             actual_time = datetime.time(datetime.now())
 
-            # Save data each 3 seconds
+            # Save data each 2 seconds
             if ((datetime.combine(date.today(), actual_time) - datetime.combine(date.today(), save_time)).total_seconds() > 2):
                 save_time = actual_time
                 data_to_file.append([emotion_text, text])
