@@ -1,0 +1,9 @@
+angry Looking up
+neutral Looking center
+neutral Looking center
+neutral Looking center
+fear Looking left
+surprise Looking center
+surprise Looking up
+neutral Looking down
+neutral Looking down
